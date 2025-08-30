@@ -1,11 +1,15 @@
 import express from 'express';
 import router from './routes/test.routes.js';
 import placesRouter from './routes/places.routes.js';
+import database from './config/db.js';
 
 const app=express();
 const port=5000;
 
 app.use(express.json());
+
+database.connect();
+
 app.use('/api/test',router);
 app.use('/api',placesRouter);
 
